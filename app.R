@@ -36,8 +36,8 @@ server <- function(input, output) {
     })
 
     output$numHeads <- renderText({ 
-        heads = rbinom(1,150,input$probSlider)
-        paste("After 150 coin flips, we had ", heads, " total heads." )
+        heads = rbinom(1,200,input$probSlider)
+        paste("After 200 coin flips, we had ", heads, " total heads." )
     })
     
 }
