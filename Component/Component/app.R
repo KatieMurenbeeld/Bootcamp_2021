@@ -68,8 +68,8 @@ ui <- fluidPage(
         
         column(3,
                radioButtons("radio", h3("Radio buttons"),
-                            choices = list("Choice 1" = 1, "Choice 2" = 2,
-                                           "Choice 3" = 3),selected = 1)),
+                            choices = list("Choice 1" = "c1", "Choice 2" = "c2",
+                                           "Choice 3" = "c3"),selected = "c1")),
         
         column(3,
                selectInput("select", h3("Select box"), 
@@ -86,12 +86,41 @@ ui <- fluidPage(
         column(3, 
                textInput("text", h3("Text input"), 
                          value = "Enter text..."))   
+    ),
+    
+    fluidRow(
+        
+        column(3,
+               uiOutput(outputId = "guitar")
+        ),
+        
+        column(3,
+               img(src = "larry.jpg", height = 200, width = 133.5, hspace = 45),
+        )
+        
+        
+        #column(3, 
+        #      )   
+        
+        
     )
     
 )
 
 # Define server logic ----
 server <- function(input, output) {
+    
+    
+    output$guitar = renderUI({
+        
+        switch(input$radio,
+               c1 = img(src = "JazzBass.jpg",  height = "300px", width = "450px"),
+               c2 = img(src = "LesPaulCustom61.jpg",  height = "300px", width = "450px"),
+               c3 = img(src = "Rickenbacker 36012.jpg",  height = "300px", width = "450px"))
+        
+        
+    })
+    
     
     
 }
